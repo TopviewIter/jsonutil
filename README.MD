@@ -1,5 +1,7 @@
 >对于fastjson，相对来说效率与速度比较快。但如代码所示，它封装起来比较麻烦。有一个特点就是如果po的值是为空的，它是不会转换出来的。
+
 `fastjson:`
+
 ``` java
 public static String toJsonString(Object object, final Map<Class<?>, Set<String>> filter){
 		
@@ -27,7 +29,9 @@ public static String toJsonString(Object object, final Map<Class<?>, Set<String>
 		
 }
 ```
+
 `test:`
+
 ``` java
 @Test
 	public void testToJsonStringWithFilter_01(){
@@ -57,10 +61,13 @@ public static String toJsonString(Object object, final Map<Class<?>, Set<String>
 		
 }
 ```
+
 `result:`
+
 >{"books":["head of java"],"friends":{"good":[{}],"bad":[{}]},"name":"xluo"}
 
 `json.lib:`
+
 ``` java
 public static <T> String toObject(T t, String[] filter){
 		JsonConfig config = new JsonConfig();
@@ -68,7 +75,9 @@ public static <T> String toObject(T t, String[] filter){
 		return JSONObject.fromObject(t, config).toString();
 }
 ```
+
 `test:`
+
 ``` java
 @Test
 	public void toObjectWithFilter(){
@@ -92,7 +101,9 @@ public static <T> String toObject(T t, String[] filter){
 		System.out.println(NJSONUtil.toObject(user, new String[]{"name"}));
 }
 ```
+
 `result:`
+
 >{"books":["head of java"],"friends":{"good":[{"books":[],"friends":null,"password"
 :""}],"bad":[{"books":[],"friends":null,"password":""}]},"password":"xluo"}
 
